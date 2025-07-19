@@ -1,0 +1,4 @@
+C:/Users/ALUMNOS/Documents/GitHub/OpenGLCGAvanzado/Libs/glfw/CMakeFiles/ALL_BUILD.dir
+C:/Users/ALUMNOS/Documents/GitHub/OpenGLCGAvanzado/Libs/glfw/CMakeFiles/ZERO_CHECK.dir
+C:/Users/ALUMNOS/Documents/GitHub/OpenGLCGAvanzado/Libs/glfw/src/CMakeFiles/glfw.dir
+C:/Users/ALUMNOS/Documents/GitHub/OpenGLCGAvanzado/Libs/glfw/src/CMakeFiles/update_mappings.dir

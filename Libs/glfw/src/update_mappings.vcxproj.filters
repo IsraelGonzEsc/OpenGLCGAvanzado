@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\ALUMNOS\Documents\GitHub\OpenGLCGAvanzado\Libs\glfw\CMakeFiles\6dc1da50149090a77f65021a14d62102\update_mappings.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\ALUMNOS\Documents\GitHub\OpenGLCGAvanzado\Libs\glfw\src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\ALUMNOS\Documents\GitHub\OpenGLCGAvanzado\Libs\glfw\src\mappings.h.in">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\Users\ALUMNOS\Documents\GitHub\OpenGLCGAvanzado\Libs\glfw\CMake\GenerateMappings.cmake" />
+    <None Include="C:\Users\ALUMNOS\Documents\GitHub\OpenGLCGAvanzado\Libs\glfw\src\CMakeFiles\update_mappings" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{82784712-128E-3150-B7AC-D6E05FE57F9B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{756283EA-1D7F-371C-AC48-5408B38E7103}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

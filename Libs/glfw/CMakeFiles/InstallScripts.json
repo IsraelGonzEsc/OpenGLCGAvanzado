@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Users/ALUMNOS/Documents/GitHub/OpenGLCGAvanzado/Libs/glfw/cmake_install.cmake",
+		"C:/Users/ALUMNOS/Documents/GitHub/OpenGLCGAvanzado/Libs/glfw/src/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
