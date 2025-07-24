@@ -1,6 +1,7 @@
-
+#include "glad.h"
 #include "GLFW/glfw3.h"
 #include "Application.h"
+#include <iostream>
 
 Application application;
 
@@ -22,15 +23,23 @@ int main(void)
 
     /* Create a windowed mode window and its OpenGL context */
     window = glfwCreateWindow(1040, 980, "Hello Aplication", NULL, NULL);
+
+    /* Make the window's context current */
+    glfwMakeContextCurrent(window);
+
+
     if (!window)
     {
         glfwTerminate();
         return -1;
     }
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+        std::cout << "error al inciar glad" << std::endl;
+        return -1;
+    }
+
     application.SetUp();
 
-    /* Make the window's context current */
-    glfwMakeContextCurrent(window);
 
     glfwSetKeyCallback(window, checkKeyboard);
 
@@ -43,7 +52,7 @@ int main(void)
         application.Update();
 
         /* Swap front and back buffers */
-        glfwSwapBuffers(window);
+        //glfwSwapBuffers(window);
         application.Draw();
 
         /* Poll for and process events */

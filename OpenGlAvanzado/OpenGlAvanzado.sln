@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35919.96 d17.13
+VisualStudioVersion = 17.13.35919.96
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HelloGLFW", "HelloGLFW\HelloGLFW.vcxproj", "{75A5C4A1-75E3-4126-AAB0-5A9E18E952AA}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HelloAplication", "HelloAplication\HelloAplication.vcxproj", "{BA150850-C07A-4B04-BC95-EB5CD5B56AB3}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HelloTriangle", "HelloTriangle\HelloTriangle.vcxproj", "{3E8AD083-0058-4691-B0E3-14A05E151EE7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,14 @@ Global
 		{BA150850-C07A-4B04-BC95-EB5CD5B56AB3}.Release|x64.Build.0 = Release|x64
 		{BA150850-C07A-4B04-BC95-EB5CD5B56AB3}.Release|x86.ActiveCfg = Release|Win32
 		{BA150850-C07A-4B04-BC95-EB5CD5B56AB3}.Release|x86.Build.0 = Release|Win32
+		{3E8AD083-0058-4691-B0E3-14A05E151EE7}.Debug|x64.ActiveCfg = Debug|x64
+		{3E8AD083-0058-4691-B0E3-14A05E151EE7}.Debug|x64.Build.0 = Debug|x64
+		{3E8AD083-0058-4691-B0E3-14A05E151EE7}.Debug|x86.ActiveCfg = Debug|Win32
+		{3E8AD083-0058-4691-B0E3-14A05E151EE7}.Debug|x86.Build.0 = Debug|Win32
+		{3E8AD083-0058-4691-B0E3-14A05E151EE7}.Release|x64.ActiveCfg = Release|x64
+		{3E8AD083-0058-4691-B0E3-14A05E151EE7}.Release|x64.Build.0 = Release|x64
+		{3E8AD083-0058-4691-B0E3-14A05E151EE7}.Release|x86.ActiveCfg = Release|Win32
+		{3E8AD083-0058-4691-B0E3-14A05E151EE7}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
