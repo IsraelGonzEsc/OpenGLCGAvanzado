@@ -10,6 +10,7 @@ class Application
 		std::map<std::string, GLuint> geometria;
 		void SetupShaders();
 		void SetupGeometry();
+		void SetupGeometrySingleArray();
 	public:
 		void SetUp();
 		void Update();

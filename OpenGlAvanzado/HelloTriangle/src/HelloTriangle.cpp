@@ -22,11 +22,11 @@ int main(void)
         return -1;
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(1040, 980, "Hello Aplication", NULL, NULL);
+    window = glfwCreateWindow(940, 980, "Hello triangle", NULL, NULL);
 
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
-
+    
 
     if (!window)
     {
@@ -38,25 +38,26 @@ int main(void)
         return -1;
     }
 
-    application.SetUp();
-
-
     glfwSetKeyCallback(window, checkKeyboard);
+
+    application.SetUp();
 
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
-        /* Render here */
-        //glClear(GL_COLOR_BUFFER_BIT);
-        application.Update();
-
-        /* Swap front and back buffers */
-        //glfwSwapBuffers(window);
-        application.Draw();
 
         /* Poll for and process events */
         glfwPollEvents();
+        application.Update();
+
+        /* Render here */
+
+
+        /* Swap front and back buffers */
+        glClear(GL_COLOR_BUFFER_BIT);
+        application.Draw();
+        glfwSwapBuffers(window);
     }
 
     glfwTerminate();
