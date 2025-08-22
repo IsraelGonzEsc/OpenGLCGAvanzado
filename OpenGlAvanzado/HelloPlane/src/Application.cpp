@@ -175,9 +175,13 @@ void Application::Draw(){
 
 	//sleccionamso programa
 	glUseProgram(shaders["passthru"]);
-
+	//unifromm text0
 	//selecciona la geometria
 	glBindVertexArray(geometria["triangulo"]);
+
+	glUserProgram(shaders["transforms"]);
+	glBindTexture(GL_TEXTURE_2D, ["TEX0"]);
+	glActiveTexture(GL_TEXTURE);
 
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 }
