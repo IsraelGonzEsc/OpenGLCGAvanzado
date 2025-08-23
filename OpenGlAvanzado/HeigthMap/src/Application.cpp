@@ -137,7 +137,7 @@ void Application::SetupGeometrySingleArray()
 
 void Application::SetupPlane()
 {
-	plane.createPlane(3);
+	plane.createPlane(100);
 
 	glGenVertexArrays(1, &plane.vao);
 	glBindVertexArray(plane.vao);

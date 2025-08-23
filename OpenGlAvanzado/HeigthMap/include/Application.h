@@ -31,7 +31,7 @@ private:
 
 	float time{0.0f};
 	float frecuency{17.0f};
-	float amplitude{0.125};
+	float amplitude{20};
 
 	GLuint timeID;
 	Plane plane;

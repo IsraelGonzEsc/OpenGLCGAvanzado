@@ -33,6 +33,18 @@ void main()
 		projection * 
 		camera * 
 		acumTrans * 
-		newPosition;  //equivale a hacer return gl_Position
+		newPosition;  
+	
+	//equivale a hacer return gl_Position
+
+	/*vec4 newPosition = position;
+
+	// Sample height from height map
+	float height = texture(heightMap, texCoord).r; 
+	pos.y += height * amplitude;
+
+	gl_Position = projection * camera * acumTrans * pos;
+	vTexCoord = texCoord;
+	*/
 
 }
