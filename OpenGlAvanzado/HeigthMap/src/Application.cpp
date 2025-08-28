@@ -33,7 +33,8 @@ void Application::SetupShaderTransforms()
 	uniforms["time"] = glGetUniformLocation(shaders["transforms"], "time");
 	uniforms["frecuency"] = glGetUniformLocation(shaders["transforms"], "frecuency");
 	uniforms["amplitude"] = glGetUniformLocation(shaders["transforms"], "amplitude");
-	uniforms["tex0"] = glGetUniformLocation(shaders["transforms"], "tex0");
+	uniforms["height"] = glGetUniformLocation(shaders["transforms"], "height");
+	uniforms["diffuse"] = glGetUniformLocation(shaders["transforms"], "diffuse");
 }
 
 void Application::SetupShaders() 
@@ -137,6 +138,7 @@ void Application::SetupGeometrySingleArray()
 
 void Application::SetupPlane()
 {
+
 	plane.createPlane(100);
 
 	glGenVertexArrays(1, &plane.vao);
@@ -193,6 +195,7 @@ void Application::Setup()
 	textures["heightmap"] = SetupTexture("Textures/Height Map PNG.png");
 	textures["lenna"] = SetupTexture("Textures/Lenna512x512.png");
 
+
 	//inicializar camara
 	eye = glm::vec3(0.0f, 0.0f, 2.0f);
 	center = glm::vec3(0.0f, 0.0f, 1.0f);
@@ -233,9 +236,15 @@ void Application::Draw()
 
 	//Seleccionar las texturas
 	//texture0
-	glBindTexture(GL_TEXTURE_2D, textures["diffuse"]);
-	glUniform1i(uniforms["tex0"], 0);
 	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, textures["height"]);
+	glUniform1i(uniforms["height"], 0);
+
+	glActiveTexture(GL_TEXTURE1);
+	glBindTexture(GL_TEXTURE_2D, textures["diffuse"]);
+	glUniform1i(uniforms["diffuse"], 1);
+
+
 
 	//Seleccionar la geometria (el triangulo)
 	//glBindVertexArray(geometry["triangulo"]);

@@ -5,46 +5,26 @@ layout(location = 1) in vec2 vTextCoord;
 
 out vec2 texCoord;
 
-out vec4 color;
-
 uniform float time;
 uniform mat4 camera;
 uniform mat4 projection;
 uniform mat4 acumTrans;
-uniform float frecuency;
-uniform float amplitude;
+uniform sampler2D height; //esto es para abrir la text en el shad
 
 
-float F(float x, float z, float amplitude, float phase, float frecuency)
-{
-	return amplitude * cos(phase + frecuency * (x * x + z * z));
-}
 
 void main()
 {
+	vec4 color = texture(height, vTextCoord);
 	vec4 newPosition = vPosition;
-	float f = F(newPosition.x, newPosition.z, amplitude, time, frecuency);
-	newPosition.y = f;
 
-	color = vec4(1.0, 1.0, 1.0, 1.0);
+	newPosition.y =3.0f * color.r * 0.2126f + color.g * 0.7152f + color.b * 0.0722f;
+
 
 	texCoord = vTextCoord;
 	gl_Position = 
 		projection * 
 		camera * 
 		acumTrans * 
-		newPosition;  
-	
-	//equivale a hacer return gl_Position
-
-	/*vec4 newPosition = position;
-
-	// Sample height from height map
-	float height = texture(heightMap, texCoord).r; 
-	pos.y += height * amplitude;
-
-	gl_Position = projection * camera * acumTrans * pos;
-	vTexCoord = texCoord;
-	*/
-
+	newPosition;  
 }
