@@ -10,15 +10,19 @@ void checkKeyboard(GLFWwindow* window, int key, int scancode, int action, int mo
     application.Keyboard(key, scancode, action, mods);
 }
 
+static void my_cursor_callback(GLFWwindow* window, double xpos, double ypos)
+{
+    application.mouse(xpos, ypos);
+}
+
 int main(void)
 {
 
-    /* Initialize the library */
+
     if (!glfwInit())
         return -1;
 
-    /* Create a windowed mode window and its OpenGL context */
-    application.window = glfwCreateWindow(1024, 768, "Texture", NULL, NULL);
+    application.window = glfwCreateWindow(1920, 1080, "Texture", NULL, NULL);
     if (!application.window)
     {
         glfwTerminate();
@@ -31,23 +35,22 @@ int main(void)
         return -1;
     }
 
-    /* Make the window's context current */
     glfwSetKeyCallback(application.window, checkKeyboard);
+
+    glfwSetCursorPosCallback(application.window, my_cursor_callback);
 
     application.Setup();
 
-    /* Loop until the user closes the window */
+
     while (!glfwWindowShouldClose(application.window))
     {
-        /* Poll for and process events */
         glfwPollEvents();
         application.Update();
 
-        /* Render here */
+
         glClear(GL_COLOR_BUFFER_BIT);
         application.Draw();
         
-        /* Swap front and back buffers */
         glfwSwapBuffers(application.window);
     }
 

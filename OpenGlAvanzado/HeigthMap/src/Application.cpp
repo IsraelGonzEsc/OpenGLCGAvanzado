@@ -21,8 +21,8 @@ void Application::SetupShaderPassthru()
 void Application::SetupShaderTransforms()
 {
 	//cargar shaders
-	std::string vertexShader{ loadTextFile("Shaders/vertexTexture.glsl") };
-	std::string fragmentShader{ loadTextFile("Shaders/fragmentTexture.glsl") };
+	std::string vertexShader{ loadTextFile("shaders/vertexTexture.glsl") };
+	std::string fragmentShader{ loadTextFile("shaders/fragmentTexture.glsl") };
 	//crear programa
 	shaders["transforms"] = InitializeProgram(vertexShader, fragmentShader);
 	std::cout << "shaders compilados" << std::endl;
@@ -33,7 +33,7 @@ void Application::SetupShaderTransforms()
 	uniforms["time"] = glGetUniformLocation(shaders["transforms"], "time");
 	uniforms["frecuency"] = glGetUniformLocation(shaders["transforms"], "frecuency");
 	uniforms["amplitude"] = glGetUniformLocation(shaders["transforms"], "amplitude");
-	uniforms["height"] = glGetUniformLocation(shaders["transforms"], "height");
+	uniforms["heightmap"] = glGetUniformLocation(shaders["transforms"], "height");
 	uniforms["diffuse"] = glGetUniformLocation(shaders["transforms"], "diffuse");
 }
 
@@ -187,23 +187,35 @@ GLuint Application::SetupTexture(const std::string& filename)
 
 void Application::Setup() 
 {
+
+	firstMouse = true;
+	lastX = 512.0f; 
+	lastY = 384.0f;  
+	yaw = -90.0f;    
+	pitch = 0.0f;
+	up = glm::vec3(0.0f, 1.0f, 0.0f);
+
 	SetupShaders();
 	//SetupGeometry();
 	//SetupGeometrySingleArray();
 	SetupPlane();
 	textures["diffuse"] = SetupTexture("Textures/Diffuse.png");
-	textures["heightmap"] = SetupTexture("Textures/Height Map PNG.png");
+	textures["heightmap"] = SetupTexture("Textures/HeightMap.png");
 	textures["lenna"] = SetupTexture("Textures/Lenna512x512.png");
 
 
 	//inicializar camara
-	eye = glm::vec3(0.0f, 0.0f, 2.0f);
-	center = glm::vec3(0.0f, 0.0f, 1.0f);
-	projection = glm::perspective(glm::radians(45.0f), (640.0f / 480.0f), 0.1f, 200.0f);
-	accumTrans = glm::rotate(
-		glm::mat4(1.0f),
+	eye = glm::vec3(0.0f, 0.0f, 3.0f);
+	center = glm::vec3(0.0f, 0.0f, 0.0f);
+	projection = glm::perspective(glm::radians(45.0f), (1024.0f / 768.0f), 0.1f, 200.0f);
+	accumTrans = glm::mat4(1.0f);
+
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
+		/*glm::mat4(1.0f),
 		glm::radians(45.0f),
 		glm::vec3(1.0f, 0.0f, 0.0f));
+		*/
 
 	glPolygonMode(GL_FRONT, GL_FILL);
 	glPolygonMode(GL_BACK, GL_LINE);
@@ -216,10 +228,12 @@ void Application::Update()
 
 	//actualizar ojo
 	center = glm::vec3(0.0f, 0.0f, 1.0f);
-	eye = glm::vec3(0.0f, 1.0f, 153.0f);
+	eye = glm::vec3(0.0f, 1.0f, 3.0f);
 	//actualizar center
 	//actualizar camara
 	camera = glm::lookAt(eye, center, glm::vec3(0.0f, 1.0f, 0.0f));
+
+	updateCameraVectors();
 }
 
 void Application::Draw() 
@@ -237,7 +251,7 @@ void Application::Draw()
 	//Seleccionar las texturas
 	//texture0
 	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, textures["height"]);
+	glBindTexture(GL_TEXTURE_2D, textures["heightmap"]);
 	glUniform1i(uniforms["height"], 0);
 
 	glActiveTexture(GL_TEXTURE1);
@@ -253,6 +267,50 @@ void Application::Draw()
 
 	//glDraw()
 	glDrawArrays(GL_TRIANGLES, 0, plane.getNumVertex());
+}
+
+void Application::updateCameraVectors()
+{
+	glm::vec3 front;
+	front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
+	front.y = sin(glm::radians(pitch));
+	front.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+	center = glm::normalize(front);
+
+	glm::vec3 right = glm::normalize(glm::cross(center, glm::vec3(0.0f, 1.0f, 0.0f)));
+	up = glm::normalize(glm::cross(right, center));
+
+	camera = glm::lookAt(eye, eye + center, up);
+}
+
+void Application::mouse(double xpos, double ypos)
+{
+	if (firstMouse)
+	{
+		lastX = xpos;
+		lastY = ypos;
+		firstMouse = false;
+	}
+
+	float xoffset = xpos - lastX;
+	float yoffset = lastY - ypos; 
+	lastX = xpos;
+	lastY = ypos;
+
+	float sensitivity = 0.1f;
+	xoffset *= sensitivity;
+	yoffset *= sensitivity;
+
+	yaw += xoffset;
+	pitch += yoffset;
+
+
+	if (pitch > 89.0f)
+		pitch = 89.0f;
+	if (pitch < -89.0f)
+		pitch = -89.0f;
+
+	updateCameraVectors();
 }
 
 void Application::Keyboard(int key, int scancode, int action, int mods)
