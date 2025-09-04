@@ -1,10 +1,3 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(534,5): warning MSB8028: El directorio intermedio (x64\Debug\) contiene archivos compartidos de otro proyecto (Texture.vcxproj). Esto puede dar lugar a un comportamiento incorrecto de limpieza y recompilación.
-  Application.cpp
-C:\Users\ALUMNOS\Documents\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\HeigthMap\src\Application.cpp(227,10): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\ALUMNOS\Documents\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\HeigthMap\src\Application.cpp(290,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\ALUMNOS\Documents\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\HeigthMap\src\Application.cpp(291,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\ALUMNOS\Documents\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\HeigthMap\src\Application.cpp(295,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\ALUMNOS\Documents\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\HeigthMap\src\Application.cpp(296,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\ALUMNOS\Documents\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\HeigthMap\src\Application.cpp(297,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\ALUMNOS\Documents\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\HeigthMap\src\Application.cpp(298,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+  TextureMain.cpp
   HeigthMap.vcxproj -> C:\Users\ALUMNOS\Documents\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\x64\Debug\HeigthMap.exe
