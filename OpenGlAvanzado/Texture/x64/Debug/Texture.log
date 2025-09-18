@@ -1,15 +1,7 @@
 ﻿  Application.cpp
-C:\Users\ALUMNOS\Documents\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\Texture\src\Application.cpp(193,10): warning C4305: '+=': truncamiento de 'double' a 'float'
-  Plane.cpp
-C:\Users\ALUMNOS\Documents\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\Texture\src\Plane.cpp(34,37): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\ALUMNOS\Documents\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\Texture\src\Plane.cpp(34,53): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\ALUMNOS\Documents\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\Texture\src\Plane.cpp(42,13): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\ALUMNOS\Documents\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\Texture\src\Plane.cpp(43,7): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\ALUMNOS\Documents\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\Texture\src\Plane.cpp(122,17): warning C4101: 'VBO_colorsID': variable local sin referencia
-C:\Users\ALUMNOS\Documents\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\Texture\src\Plane.cpp(122,9): warning C4101: 'VBO_id': variable local sin referencia
-C:\Users\ALUMNOS\Documents\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\Texture\src\Plane.cpp(155,14): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\Texture\src\Application.cpp(200,10): warning C4305: '+=': truncamiento de 'double' a 'float'
   TextureMain.cpp
-  ShaderFuncs.cpp
   Generando código...
-  glad.c
-  Texture.vcxproj -> C:\Users\ALUMNOS\Documents\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\x64\Debug\Texture.exe
+  Texture.vcxproj -> C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\x64\Debug\Texture.exe
+  'pwsh.exe' is not recognized as an internal or external command,
+  operable program or batch file.

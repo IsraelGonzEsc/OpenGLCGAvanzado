@@ -249,18 +249,7 @@ void Application::Keyboard(int key, int scancode, int action, int mods)
 
 void Application::Keyboard2()
 {
-	//Esta funcion de obtener la tecla que se esta presionando la use en el proyecto del anterior trimestre
-	//Debido a que no supe como usar la otra funcion, use esta, aunque se que no es lo que pidio profe
-	// 
-	// Use las teclas A,S,D para referirme al R,G,B.
-	// Por lo tanto si presiona A y mueve la posicion del mouse hacia la derecha
-	// la tonalidad del rojo aumentara, y si lo mueve para la izquierda disminuira
-	// solo se basa en la posicion del mouse en X, por lo que si lo mueve hacia arriba o abajo no cambiara.
-	// 
-	// Esto aplica igual para las demas teclas S y D.
-	// posX se divide en 5120 ya que es mi resolucion x4, esto para que sea mas notorio el cambio y no de golpe.
-	// 
-	//
+
 
 	if (glfwGetKey(this->window, GLFW_KEY_A) == GLFW_PRESS) 
 	{

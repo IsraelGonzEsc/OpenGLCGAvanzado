@@ -1,5 +1,4 @@
 
-
 #include "Plane.h"
 
 Plane::Plane() : Object3D(),

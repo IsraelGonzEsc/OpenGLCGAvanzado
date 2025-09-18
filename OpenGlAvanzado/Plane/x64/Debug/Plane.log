@@ -1,2 +1,19 @@
 ﻿  Application.cpp
-C:\Users\ALUMNOS\Documents\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\Plane\src\Application.cpp(8,10): error C1083: No se puede abrir el archivo incluir: 'stb_image.h': No such file or directory
+C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\Plane\src\Application.cpp(183,10): warning C4305: '+=': truncamiento de 'double' a 'float'
+  HelloPlane.cpp
+C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\Plane\src\HelloPlane.cpp(22,79): warning C4244: 'argumento': conversión de 'const float' a 'int'; posible pérdida de datos
+C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\Plane\src\HelloPlane.cpp(22,54): warning C4244: 'argumento': conversión de 'const float' a 'int'; posible pérdida de datos
+  Plane.cpp
+C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\Plane\src\Plane.cpp(34,37): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\Plane\src\Plane.cpp(34,53): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\Plane\src\Plane.cpp(42,13): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\Plane\src\Plane.cpp(43,7): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\Plane\src\Plane.cpp(120,17): warning C4101: 'VBO_colorsID': variable local sin referencia
+C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\Plane\src\Plane.cpp(120,9): warning C4101: 'VBO_id': variable local sin referencia
+C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\Plane\src\Plane.cpp(141,14): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+  ShaderFuncs.cpp
+  Generando código...
+  glad.c
+  Plane.vcxproj -> C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\x64\Debug\Plane.exe
+  'pwsh.exe' is not recognized as an internal or external command,
+  operable program or batch file.

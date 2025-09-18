@@ -1,25 +1,32 @@
 #pragma once
 #include <map>
 #include <string>
+#include <vector>
 #include "glad.h"
+
 class Application
 {
-	private:
+private:
+    std::map<std::string, GLuint> shaders;
+    std::map<std::string, GLuint> geometria;
+    void SetupShaders();
+    void SetupGeometry2();
 
-		std::map<std::string, GLuint> shaders;
-		std::map<std::string, GLuint> geometria;
-		void SetupShaders();
-		void SetupGeometry();
-		void SetupGeometry2();
-		void SetupGeometrySingleArray();
+    GLuint VBOColor1_id;
+    GLuint VBOColor2_id;
 
-		float time;
 
-		GLuint timeID;
+    std::vector<float> currentColors1;
+    std::vector<float> currentColors2;
 
-	public:
-		void SetUp();
-		void Update();
-		void Draw();
-		void Keyboard();
+    
+    bool targetColorState = false;
+
+    float colorStep = 0.02f; 
+
+public:
+    void SetUp();
+    void Update();
+    void Draw();
+    void Keyboard();
 };

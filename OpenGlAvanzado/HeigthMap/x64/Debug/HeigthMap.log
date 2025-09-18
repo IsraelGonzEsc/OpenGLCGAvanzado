@@ -1,3 +1,22 @@
-﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(534,5): warning MSB8028: El directorio intermedio (x64\Debug\) contiene archivos compartidos de otro proyecto (Texture.vcxproj). Esto puede dar lugar a un comportamiento incorrecto de limpieza y recompilación.
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(538,5): warning MSB8028: El directorio intermedio (x64\Debug\) contiene archivos compartidos de otro proyecto (Texture.vcxproj). Esto puede dar lugar a un comportamiento incorrecto de limpieza y recompilación.
+  Application.cpp
+C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\HeigthMap\src\Application.cpp(227,10): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\HeigthMap\src\Application.cpp(290,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\HeigthMap\src\Application.cpp(291,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\HeigthMap\src\Application.cpp(295,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\HeigthMap\src\Application.cpp(296,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\HeigthMap\src\Application.cpp(297,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\HeigthMap\src\Application.cpp(298,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+  Plane.cpp
+C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\HeigthMap\src\Plane.cpp(35,6): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\HeigthMap\src\Plane.cpp(36,6): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\HeigthMap\src\Plane.cpp(44,14): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\HeigthMap\src\Plane.cpp(45,7): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\HeigthMap\src\Plane.cpp(127,14): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+  ShaderFuncs.cpp
   TextureMain.cpp
-  HeigthMap.vcxproj -> C:\Users\ALUMNOS\Documents\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\x64\Debug\HeigthMap.exe
+  Generando código...
+  glad.c
+  HeigthMap.vcxproj -> C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\x64\Debug\HeigthMap.exe
+  'pwsh.exe' is not recognized as an internal or external command,
+  operable program or batch file.

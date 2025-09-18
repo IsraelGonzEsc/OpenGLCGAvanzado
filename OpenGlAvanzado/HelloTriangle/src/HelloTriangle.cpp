@@ -17,22 +17,18 @@ int main(void)
 {
     GLFWwindow* window;
 
-    /* Initialize the library */
     if (!glfwInit())
         return -1;
 
-    /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(940, 980, "Hello triangle", NULL, NULL);
-
-    /* Make the window's context current */
-    glfwMakeContextCurrent(window);
-    
-
+    window = glfwCreateWindow(940, 980, "Hello triangles", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
         return -1;
     }
+
+    glfwMakeContextCurrent(window);
+
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
         std::cout << "error al inciar glad" << std::endl;
         return -1;
@@ -42,20 +38,13 @@ int main(void)
 
     application.SetUp();
 
-
-    /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
-
-        /* Poll for and process events */
         glfwPollEvents();
+        application.Keyboard();
         application.Update();
 
-        /* Render here */
-
-
-        /* Swap front and back buffers */
-        glClear(GL_COLOR_BUFFER_BIT| GL_DEPTH_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         application.Draw();
         glfwSwapBuffers(window);
     }

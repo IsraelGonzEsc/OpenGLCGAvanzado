@@ -33,6 +33,13 @@ private:
 	float frecuency{17.0f};
 	float amplitude{0.125};
 
+	float blendFactor = 0.0f;
+	float blendSpeed = 0.1f;
+	int blendDirection = 0;
+
+	GLuint tex1, tex2; 
+	GLint uBlendFactor;
+
 	GLuint timeID;
 	Plane plane;
 

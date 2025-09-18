@@ -172,7 +172,13 @@ void Application::Setup()
 	//SetupGeometry();
 	//SetupGeometrySingleArray();
 	SetupPlane();
+
 	textures["lenna"] = SetupTexture("Textures/Lenna512x512.png");
+	textures["balatro"] = SetupTexture("Textures/balatro.png");
+
+	tex1 = textures["lenna"];
+	tex2 = textures["balatro"];
+	uBlendFactor = glGetUniformLocation(shaders["transforms"], "blendFactor");
 
 	//inicializar camara
 	eye = glm::vec3(0.0f, 0.0f, 2.0f);
@@ -189,8 +195,13 @@ void Application::Setup()
 
 void Application::Update() 
 {
+
 	//std::cout << "Application::Update()" << std::endl;
 	time += 0.0001;
+
+	blendFactor += blendSpeed * blendDirection;
+	if (blendFactor < 0.0f) blendFactor = 0.0f;
+	if (blendFactor > 1.0f) blendFactor = 1.0f;
 
 	//actualizar ojo
 	center = glm::vec3(0.0f, 0.0f, 1.0f);
@@ -213,10 +224,17 @@ void Application::Draw()
 	glUniformMatrix4fv(uniforms["accumTrans"], 1, GL_FALSE, glm::value_ptr(accumTrans));
 
 	//Seleccionar las texturas
-	//texture0
-	glBindTexture(GL_TEXTURE_2D, textures["lenna"]);
-	glUniform1i(uniforms["tex0"], 0);
+	// texturas
 	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, tex1);
+	glUniform1i(glGetUniformLocation(shaders["transforms"], "tex0"), 0);
+
+	glActiveTexture(GL_TEXTURE1);
+	glBindTexture(GL_TEXTURE_2D, tex2);
+	glUniform1i(glGetUniformLocation(shaders["transforms"], "tex1"), 1);
+
+	// blend
+	glUniform1f(uBlendFactor, blendFactor);
 
 	//Seleccionar la geometria (el triangulo)
 	//glBindVertexArray(geometry["triangulo"]);
@@ -229,9 +247,22 @@ void Application::Draw()
 
 void Application::Keyboard(int key, int scancode, int action, int mods)
 {
+
+
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 	{
 		//activar el flag de salida del probgrama
 		glfwSetWindowShouldClose(window, 1);
+	}
+
+	if (key == GLFW_KEY_RIGHT)
+	{
+		if (action == GLFW_PRESS) blendDirection = 1;
+		if (action == GLFW_RELEASE) blendDirection = 0;
+	}
+	if (key == GLFW_KEY_LEFT)
+	{
+		if (action == GLFW_PRESS) blendDirection = -1;
+		if (action == GLFW_RELEASE) blendDirection = 0;
 	}
 }
