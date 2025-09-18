@@ -41,6 +41,8 @@ private:
     float frecuency{ 17.0f };
     float amplitude{ 20 };
 
+    float planeRotationY;
+
     GLuint timeID;
     Plane plane;
 

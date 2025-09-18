@@ -24,9 +24,6 @@
     <ClCompile Include="src\glad.c">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\HelloPlane.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="src\Plane.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>

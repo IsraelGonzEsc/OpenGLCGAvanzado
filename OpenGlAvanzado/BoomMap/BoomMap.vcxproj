@@ -24,6 +24,7 @@
     <ProjectGuid>{f976214f-3c69-42ff-9733-dc2f613994ab}</ProjectGuid>
     <RootNamespace>BoomMap</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>BumpMap</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

@@ -33,11 +33,11 @@ void Application::SetupShaderTransforms()
 	uniforms["time"] = glGetUniformLocation(shaders["transforms"], "time");
 	uniforms["frecuency"] = glGetUniformLocation(shaders["transforms"], "frecuency");
 	uniforms["amplitude"] = glGetUniformLocation(shaders["transforms"], "amplitude");
-	uniforms["RockTexture"] = glGetUniformLocation(shaders["transforms"], "RockTexture");
-	uniforms["RockNormal"] = glGetUniformLocation(shaders["transforms"], "RockNormal");
+	uniforms["heightmap"] = glGetUniformLocation(shaders["transforms"], "height");
+	uniforms["diffuse"] = glGetUniformLocation(shaders["transforms"], "diffuse");
 }
 
-void Application::SetupShaders() 
+void Application::SetupShaders()
 {
 	SetupShaderTransforms();
 }
@@ -72,15 +72,15 @@ void Application::SetupGeometry()
 	glBindVertexArray(VAO_id);
 
 	geometry["triangulo"] = VAO_id;
-	 
+
 	//crear VBO vertices
 	glGenBuffers(1, &VBO_id);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO_id);  //Ojo esto todavia no ha reservado memoria
 	//Pasar arreglo de vertices
-	glBufferData(GL_ARRAY_BUFFER, 
-				sizeof(GLfloat) * triangle.size(),
-				&triangle[0], 
-				GL_STATIC_DRAW);  //Mandamos la geometria al buffer
+	glBufferData(GL_ARRAY_BUFFER,
+		sizeof(GLfloat) * triangle.size(),
+		&triangle[0],
+		GL_STATIC_DRAW);  //Mandamos la geometria al buffer
 
 	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, 0); //geometria
 	glEnableVertexAttribArray(0);
@@ -112,21 +112,21 @@ void Application::SetupGeometrySingleArray()
 	};
 	{
 
-	//Crear VAO
-	GLuint VAO_id, VBO_id;
-	glGenVertexArrays(1, &VAO_id);
-	glBindVertexArray(VAO_id);
+		//Crear VAO
+		GLuint VAO_id, VBO_id;
+		glGenVertexArrays(1, &VAO_id);
+		glBindVertexArray(VAO_id);
 
-	geometry["triangulo"] = VAO_id;
+		geometry["triangulo"] = VAO_id;
 
-	//crear VBO vertices
-	glGenBuffers(1, &VBO_id);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO_id);  //Ojo esto todavia no ha reservado memoria
-	//Pasar arreglo de vertices
-	glBufferData(GL_ARRAY_BUFFER,
-		sizeof(GLfloat) * triangle.size(),
-		&triangle[0],
-		GL_STATIC_DRAW);  //Mandamos la geometria al buffer
+		//crear VBO vertices
+		glGenBuffers(1, &VBO_id);
+		glBindBuffer(GL_ARRAY_BUFFER, VBO_id);  //Ojo esto todavia no ha reservado memoria
+		//Pasar arreglo de vertices
+		glBufferData(GL_ARRAY_BUFFER,
+			sizeof(GLfloat) * triangle.size(),
+			&triangle[0],
+			GL_STATIC_DRAW);  //Mandamos la geometria al buffer
 	}
 	int stride = 8 * sizeof(GLfloat);
 	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, stride, (GLvoid*)0); //geometria
@@ -162,10 +162,10 @@ void Application::SetupPlane()
 GLuint Application::SetupTexture(const std::string& filename)
 {
 	int width, height, channels;
-	unsigned char * img = stbi_load(filename.c_str(), &width, &height, &channels, 4);
+	unsigned char* img = stbi_load(filename.c_str(), &width, &height, &channels, 4);
 	if (img == nullptr)
 		return -1;
-	
+
 	GLuint texID = -1;
 	glGenTextures(1, &texID);
 	glBindTexture(GL_TEXTURE_2D, texID);
@@ -185,13 +185,13 @@ GLuint Application::SetupTexture(const std::string& filename)
 	return texID;
 }
 
-void Application::Setup() 
+void Application::Setup()
 {
 
 	firstMouse = true;
-	lastX = 512.0f; 
-	lastY = 384.0f;  
-	yaw = -90.0f;    
+	lastX = 512.0f;
+	lastY = 384.0f;
+	yaw = -90.0f;
 	pitch = 0.0f;
 	up = glm::vec3(0.0f, 1.0f, 0.0f);
 
@@ -199,10 +199,13 @@ void Application::Setup()
 	//SetupGeometry();
 	//SetupGeometrySingleArray();
 	SetupPlane();
-	textures["RockNormal"] = SetupTexture("Textures/RockNormal.jpg");
 	textures["RockTexture"] = SetupTexture("Textures/RockTexture.jpg");
-	textures["lenna"] = SetupTexture("Textures/Lenna512x512.png");
+	textures["RockNormal"] = SetupTexture("Textures/RockNormal.jpg");
 
+	uniforms["diffuse"] = glGetUniformLocation(shaders["transforms"], "diffuse");
+	uniforms["normalMap"] = glGetUniformLocation(shaders["transforms"], "normalMap");
+	uniforms["lightPos"] = glGetUniformLocation(shaders["transforms"], "lightPos");
+	uniforms["viewPos"] = glGetUniformLocation(shaders["transforms"], "viewPos");
 
 	//inicializar camara
 	eye = glm::vec3(0.0f, 0.0f, 3.0f);
@@ -212,16 +215,16 @@ void Application::Setup()
 
 	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
-		/*glm::mat4(1.0f),
-		glm::radians(45.0f),
-		glm::vec3(1.0f, 0.0f, 0.0f));
-		*/
+	/*glm::mat4(1.0f),
+	glm::radians(45.0f),
+	glm::vec3(1.0f, 0.0f, 0.0f));
+	*/
 
 	glPolygonMode(GL_FRONT, GL_FILL);
 	glPolygonMode(GL_BACK, GL_LINE);
 }
 
-void Application::Update() 
+void Application::Update()
 {
 	//std::cout << "Application::Update()" << std::endl;
 	time += 0.0001;
@@ -236,36 +239,37 @@ void Application::Update()
 	updateCameraVectors();
 }
 
-void Application::Draw() 
+void Application::Draw()
 {
-	//Seleccionar programa (shaders)
 	glUseProgram(shaders["transforms"]);
-	//Pasar el resto de los parámetros para el programa
-	glUniform1f(uniforms["time"], time);
-	glUniform1f(uniforms["frecuency"], frecuency);
-	glUniform1f(uniforms["amplitude"], amplitude);
+
+	// pasar matrices
 	glUniformMatrix4fv(uniforms["camera"], 1, GL_FALSE, glm::value_ptr(camera));
 	glUniformMatrix4fv(uniforms["projection"], 1, GL_FALSE, glm::value_ptr(projection));
+
+	glm::mat4 rotation = glm::rotate(glm::mat4(1.0f), glm::radians(planeRotationY), glm::vec3(0.0f, 1.0f, 0.0f));
+	glm::mat4 finalTransform = rotation * accumTrans;
+
+	glUniformMatrix4fv(uniforms["accumTrans"], 1, GL_FALSE, glm::value_ptr(finalTransform));
+
+
 	glUniformMatrix4fv(uniforms["accumTrans"], 1, GL_FALSE, glm::value_ptr(accumTrans));
 
-	//Seleccionar las texturas
-	//texture0
+	// texturas
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, textures["RockTexture"]);
-	glUniform1i(uniforms["RockTexture"], 0);
+	glUniform1i(uniforms["diffuse"], 0);
 
 	glActiveTexture(GL_TEXTURE1);
 	glBindTexture(GL_TEXTURE_2D, textures["RockNormal"]);
-	glUniform1i(uniforms["RockNormal"], 1);
+	glUniform1i(uniforms["normalMap"], 1);
 
+	// luz y vista
+	glUniform3fv(uniforms["lightPos"], 1, glm::value_ptr(glm::vec3(2.0f, 5.0f, 3.0f))); 
+	glUniform3fv(uniforms["viewPos"], 1, glm::value_ptr(eye));
 
-
-	//Seleccionar la geometria (el triangulo)
-	//glBindVertexArray(geometry["triangulo"]);
+	// dibujar plano
 	glBindVertexArray(plane.vao);
-
-
-	//glDraw()
 	glDrawArrays(GL_TRIANGLES, 0, plane.getNumVertex());
 }
 
@@ -293,7 +297,7 @@ void Application::mouse(double xpos, double ypos)
 	}
 
 	float xoffset = xpos - lastX;
-	float yoffset = lastY - ypos; 
+	float yoffset = lastY - ypos;
 	lastX = xpos;
 	lastY = ypos;
 
@@ -319,5 +323,14 @@ void Application::Keyboard(int key, int scancode, int action, int mods)
 	{
 		//activar el flag de salida del probgrama
 		glfwSetWindowShouldClose(window, 1);
+	}
+
+
+	if (action == GLFW_PRESS || action == GLFW_REPEAT)
+	{
+		if (key == GLFW_KEY_Q)
+			planeRotationY -= 5.0f; 
+		if (key == GLFW_KEY_E)
+			planeRotationY += 5.0f; 
 	}
 }

@@ -28,6 +28,7 @@ private:
     float lastY;
     float yaw;
     float pitch;
+    float planeRotationY;
 
     void SetupShaderPassthru();
     void SetupShaderTransforms();

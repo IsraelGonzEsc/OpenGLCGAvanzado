@@ -1,28 +1,24 @@
-#ifndef __OBJECT3D_H__
-#define __OBJECT3D_H__
+	#pragma once
 
-#include "glad.h"
-#include <iostream>
-#include "glm/glm.hpp"
-
+	#include <iostream>
+	#include "glad.h"
+	#include "glm/glm.hpp"
 
 
 
-class Object3D
-{
-public:
-	GLuint	vao, //Vertex Array Object
-			vbo; //vertex buffer object
+	class Object3D{
+	public:
+		GLuint	vao, //Vertex Array Object
+				vbo; //Vertex Buffer Object
 
-	int numVertex; //numero de vertices para este objeto
-	glm::vec3 angles;
+		int numVertex; //numero de vertices para este objeto
 
-	GLuint shader[2]; //referencia a los shaders
-	GLuint transforms,
-			wireframe;
+		GLuint shader; //referencia a los shaders
+		GLuint uniform; //para almacenar el angulo
+		float angleX; //<-----------------------------------------
+		float angleY;
+		float angleZ;
+		//Object3D();
 
-	//Object3D();
+	};
 
-};
-
-#endif //__OBJECT3D_H__

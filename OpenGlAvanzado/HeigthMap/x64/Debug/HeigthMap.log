@@ -7,16 +7,8 @@ C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanza
 C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\HeigthMap\src\Application.cpp(296,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
 C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\HeigthMap\src\Application.cpp(297,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
 C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\HeigthMap\src\Application.cpp(298,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-  Plane.cpp
-C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\HeigthMap\src\Plane.cpp(35,6): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\HeigthMap\src\Plane.cpp(36,6): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\HeigthMap\src\Plane.cpp(44,14): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\HeigthMap\src\Plane.cpp(45,7): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\HeigthMap\src\Plane.cpp(127,14): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
-  ShaderFuncs.cpp
   TextureMain.cpp
   Generando código...
-  glad.c
   HeigthMap.vcxproj -> C:\Users\gonza\OneDrive\Público\Documentos\GitHub\OpenGLCGAvanzado\OpenGlAvanzado\x64\Debug\HeigthMap.exe
   'pwsh.exe' is not recognized as an internal or external command,
   operable program or batch file.

@@ -1,30 +1,26 @@
-	#version 460 core
+#version 460 core
 
-	layout(location = 0) in vec4 vPosition;
-	layout(location = 1) in vec2 vTextCoord;
+layout(location = 0) in vec4 vPosition;
+layout(location = 1) in vec2 vTexCoord;
 
-	out vec2 texCoord;
+out vec2 texCoord;
+out vec3 FragPos;
+out vec3 TangentLightPos;
+out vec3 TangentViewPos;
 
-	uniform float time;
-	uniform mat4 camera;
-	uniform mat4 projection;
-	uniform mat4 acumTrans;
-	uniform sampler2D RockNormal; //esto es para abrir la text en el shad
+uniform mat4 camera;
+uniform mat4 projection;
+uniform mat4 acumTrans;
+uniform vec3 lightPos;
+uniform vec3 viewPos;
 
+void main()
+{
+    FragPos = vec3(acumTrans * vPosition);
+    texCoord = vTexCoord;
 
+    TangentLightPos = lightPos;
+    TangentViewPos = viewPos;
 
-	void main()
-	{
-		vec4 color = texture(RockNormal, vTextCoord);
-		vec4 newPosition = vPosition;
-
-		newPosition.y =2.0f * (color.r * 0.2126f + color.g * 0.7152f + color.b * 0.0722f);
-
-
-		texCoord = vTextCoord;
-		gl_Position = 
-			projection * 
-			camera * 
-			acumTrans * 
-		newPosition;  
-	}
+    gl_Position = projection * camera * acumTrans * vPosition;
+}
